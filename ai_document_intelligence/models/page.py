@@ -2,7 +2,8 @@ from pydantic import BaseModel
 
 
 class Page(BaseModel):
+    """Represents a single page within a parsed document."""
 
-    page_number: int
+    number: int
 
     text: str

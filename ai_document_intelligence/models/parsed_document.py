@@ -5,6 +5,7 @@ from .page import Page
 
 
 class ParsedDocument(BaseModel):
+    """Normalized parser output."""
 
     raw_text: str
 

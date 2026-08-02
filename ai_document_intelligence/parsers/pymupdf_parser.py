@@ -33,7 +33,7 @@ class PyMuPDFParser(BaseParser):
 
             pages.append(
                 Page(
-                    page_number=index + 1,
+                    number=index + 1,
                     text=text,
                 )
             )
