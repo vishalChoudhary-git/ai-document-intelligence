@@ -10,6 +10,7 @@ from .base_parser import BaseParser
 
 
 class PyMuPDFParser(BaseParser):
+    """PDF parser powered by PyMuPDF."""
 
     def parse(
         self,
@@ -21,39 +22,41 @@ class PyMuPDFParser(BaseParser):
             filetype="pdf",
         )
 
-        pages = []
+        pages: list[Page] = []
 
-        raw_text = []
-
-        for index, page in enumerate(pdf):
-
-            text = page.get_text()
-
-            raw_text.append(text)
-
-            pages.append(
-                Page(
-                    number=index + 1,
-                    text=text,
-                )
-            )
+        raw_text: list[str] = []
 
         metadata = pdf.metadata or {}
 
-        document_metadata = DocumentMetadata(
-            title=metadata.get("title"),
-            author=metadata.get("author"),
-            creator=metadata.get("creator"),
-            producer=metadata.get("producer"),
-            creation_date=metadata.get("creationDate"),
-            modification_date=metadata.get("modDate"),
-            page_count=len(pages),
-        )
+        try:
 
-        pdf.close()
+            for index, page in enumerate(pdf):
 
-        return ParsedDocument(
-            raw_text="\n".join(raw_text),
-            pages=pages,
-            metadata=document_metadata,
-        )
+                text = page.get_text()
+
+                raw_text.append(text)
+
+                pages.append(
+                    Page(
+                        number=index + 1,
+                        text=text,
+                    )
+                )
+
+            return ParsedDocument(
+                raw_text="\n".join(raw_text),
+                pages=pages,
+                metadata=DocumentMetadata(
+                    title=metadata.get("title"),
+                    author=metadata.get("author"),
+                    creator=metadata.get("creator"),
+                    producer=metadata.get("producer"),
+                    creation_date=metadata.get("creationDate"),
+                    modification_date=metadata.get("modDate"),
+                    page_count=len(pages),
+                ),
+            )
+
+        finally:
+
+            pdf.close()

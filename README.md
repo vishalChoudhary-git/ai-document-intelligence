@@ -1,7 +1,6 @@
 # AI Document Intelligence
 
-A production-ready Python SDK for intelligent PDF parsing for LLM applications.
-
+A Python SDK for document intelligence, PDF parsing, and structured extraction for LLM and RAG applications.
 ## Installation
 
 ```bash
@@ -15,7 +14,24 @@ from ai_document_intelligence import DocumentParser
 
 parser = DocumentParser()
 
-document = parser.parse_file("sample.pdf")
+document = parser.parse("annual_report.pdf")
 
 print(document.metadata.page_count)
+print(document.pages[0].text)
 ```
+
+## Current Features
+
+- PDF Parsing
+- PyMuPDF Backend
+- Metadata Extraction
+- Page-wise Text Extraction
+- Raw Text Extraction
+
+## Roadmap
+
+- Docling
+- OCR
+- Tables
+- Layout Detection
+- Smart Chunking

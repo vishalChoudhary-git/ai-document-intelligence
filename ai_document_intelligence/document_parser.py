@@ -1,27 +1,22 @@
-from pathlib import Path
-
-from .models import ParsedDocument
-from .parsers.pymupdf_parser import PyMuPDFParser
+from ai_document_intelligence.models import ParsedDocument
+from ai_document_intelligence.parsers import PyMuPDFParser
+from ai_document_intelligence.types import DocumentSource
+from ai_document_intelligence.utils.document_loader import (
+    DocumentLoader,
+)
 
 
 class DocumentParser:
 
-    def __init__(self) -> None:
+    def __init__(self):
 
         self._parser = PyMuPDFParser()
 
     def parse(
         self,
-        content: bytes,
+        source: DocumentSource,
     ) -> ParsedDocument:
+
+        content = DocumentLoader.load(source)
 
         return self._parser.parse(content)
-
-    def parse_file(
-        self,
-        file_path: str | Path,
-    ) -> ParsedDocument:
-
-        with open(file_path, "rb") as file:
-
-            return self.parse(file.read())

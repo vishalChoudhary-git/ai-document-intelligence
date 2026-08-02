@@ -8,3 +8,8 @@ class ParseError(DocumentIntelligenceError):
 
 class UnsupportedFormatError(DocumentIntelligenceError):
     """Raised when a file format is unsupported."""
+
+class InvalidDocumentSourceError(
+    DocumentIntelligenceError,
+):
+    """Raised when an unsupported document source is provided."""

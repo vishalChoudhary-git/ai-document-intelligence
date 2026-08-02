@@ -1,25 +1,54 @@
 [project]
 name = "ai-document-intelligence"
 version = "0.1.0"
-description = "A production-ready Python SDK for intelligent PDF parsing for LLM applications."
+description = "Python SDK for document intelligence, PDF parsing, and structured extraction for LLM and RAG applications."
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 license = { text = "MIT" }
 
 authors = [
     { name = "Vishal Choudhary" }
 ]
 
+keywords = [
+    "pdf",
+    "document",
+    "document-intelligence",
+    "llm",
+    "genai",
+    "rag",
+    "parser",
+    "pymupdf"
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
 dependencies = [
     "pymupdf>=1.26.0",
-    "pydantic>=2.11.0"
+    "pydantic>=2.0"
 ]
+
+[project.urls]
+Homepage = "https://github.com/vishalChoudhary-git/ai-document-intelligence"
+Repository = "https://github.com/vishalChoudhary-git/ai-document-intelligence"
+Issues = "https://github.com/vishalChoudhary-git/ai-document-intelligence/issues"
 
 [dependency-groups]
 dev = [
     "pytest>=8.4.0",
     "ruff>=0.12.0",
-    "mypy>=1.17.0"
+    "mypy>=1.17.0",
+    "twine>=6.1.0",
 ]
 
 [build-system]
@@ -28,13 +57,13 @@ build-backend = "hatchling.build"
 
 [tool.ruff]
 line-length = 88
-target-version = "py312"
+target-version = "py311"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
 [tool.mypy]
-python_version = "3.12"
+python_version = "3.11"
 strict = true
 
 [[tool.mypy.overrides]]
