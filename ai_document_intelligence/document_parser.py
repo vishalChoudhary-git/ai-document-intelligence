@@ -8,9 +8,9 @@ from ai_document_intelligence.utils.document_loader import (
 
 class DocumentParser:
 
-    def __init__(self):
+    def __init__(self) -> None:
 
-        self._parser = PyMuPDFParser()
+        self._parser: PyMuPDFParser = PyMuPDFParser()
 
     def parse(
         self,

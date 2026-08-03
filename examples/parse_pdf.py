@@ -2,7 +2,7 @@ from ai_document_intelligence import DocumentParser
 
 parser = DocumentParser()
 
-document = parser.parse_file("sample.pdf")
+document = parser.parse("sample.pdf")
 
 print(document.metadata)
 
